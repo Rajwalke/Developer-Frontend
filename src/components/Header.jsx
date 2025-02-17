@@ -25,7 +25,7 @@ const Header=()=>{
           }
         )
         dispatch(deleteUserDetails());
-        // Nevigate("/login");
+        return Nevigate("/login");
       }catch(err){
         console.error(err);
       }
@@ -58,9 +58,9 @@ const Header=()=>{
               </Link>
             </li>
             <li><a className="text-base md:text-2xl font-semibold">Settings</a></li>
-            <li><Link to="/login" className="text-base md:text-2xl font-semibold"
+            <li><a className="text-base md:text-2xl font-semibold"
               onClick={handleLogOut}
-            >Logout</Link></li>
+            >Logout</a></li>
           </ul>
         </div>}
         <div>
