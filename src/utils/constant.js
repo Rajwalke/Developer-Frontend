@@ -1,0 +1,1 @@
+export const BACKEND_LOCALHOST_URL= "http://localhost:7777";
