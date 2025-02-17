@@ -15,15 +15,10 @@ const Feed=()=>{
     return(
         <>
         {display && <AlertMessage/>}
-        
-        <div className="flex w-full h-full mx-1 justify-center items-center mt-8">
-            <div className="bg-red-500 w-1/6">
+            
+            <div className=" w-6/6 shrink-0 min-h-screen bg-base-300 rounded-lg shadow-sm p-4 ">
                 <h1>Hello</h1>
             </div>
-            <div className="bg-yellow-500 w-5/6 ">
-                <h1>Hello</h1>
-            </div>
-        </div>
         </>
     )
 }

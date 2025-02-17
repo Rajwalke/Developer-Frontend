@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 const Login=()=>{
     const [email,setEmail]=useState("akshay@gmail.com");
     const [password,setPassword]=useState("Akshay@2004");
+    const [errorMessage,setErrorMessage]=useState(null);
     const Navigate=useNavigate();
     const dispatch=useDispatch();
     const handleLogin=async()=>{
@@ -25,7 +26,8 @@ const Login=()=>{
             Navigate("/feed")
             // console.log("userinfo",responce?.data?.userInfo)
         }catch(err){
-            console.error(err.message);
+            setErrorMessage(err?.response?.data?.message || "Something went Wrong");
+            // console.error("check loginpage Error",err);
         }
     }
 
@@ -63,6 +65,7 @@ const Login=()=>{
                   </svg>
                   <input type="password" className="grow"value={password} placeholder="*****" onChange={(e)=>setPassword(e.target.value)} />
             </label>
+            <p className="text-red-500 font-semibold text-2xl">{errorMessage}</p>
              <div className="my-2">
                 <p className="text-xl">Create account ?<span className="text-primary ml-2 font-semibold cursor-pointer" 
                 onClick={()=>{
@@ -70,6 +73,7 @@ const Login=()=>{
                 }
                 }>Signup Here</span></p>
              </div>
+             
              <div className="card-actions justify-center">
                <button className="btn btn-primary text-2xl mt-1" onClick={handleLogin}>Login</button>
              </div>

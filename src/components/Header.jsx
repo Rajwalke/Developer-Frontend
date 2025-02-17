@@ -25,7 +25,7 @@ const Header=()=>{
           }
         )
         dispatch(deleteUserDetails());
-        return Nevigate("/login");
+        Nevigate("/login");
       }catch(err){
         console.error(err);
       }

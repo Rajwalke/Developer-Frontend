@@ -1,6 +1,6 @@
 import axios from "axios";
 import { BACKEND_LOCALHOST_URL } from "../utils/constant";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addUserDetails } from "../utils/userInfoSlice";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 const Signup=()=>{
   const Nevigate=useNavigate();
   const dispatch=useDispatch();
+  const [errorMessage,setErrorMessage]=useState(null);
+
   const firstName=useRef();
   const lastName=useRef();
   const email=useRef();
@@ -16,7 +18,7 @@ const Signup=()=>{
   const age=useRef();
   const photoURL=useRef();
   const handleSignup=async()=>{
-  
+    try{
       const responce=await axios.post(
         BACKEND_LOCALHOST_URL+"/signup",
 
@@ -44,6 +46,10 @@ const Signup=()=>{
       //   gender.current.value,
       //   age.current.value,
       )
+    }catch(err){
+      setErrorMessage(err.response.data.message  || "Something went Wrong");
+      console.error(err);
+    }
 
   }
     return (
@@ -157,6 +163,7 @@ const Signup=()=>{
                     <input type="file" ref={photoURL} />
                 </label>       
           </div>
+          <p className="text-2xl font-semibold text-red-500">{errorMessage}</p>
    
     <div className="card-actions justify-center" onClick={handleSignup}>
       <button className="btn btn-primary text-2xl font-semibold">Signup</button>
