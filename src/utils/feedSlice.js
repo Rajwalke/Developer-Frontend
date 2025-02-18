@@ -6,9 +6,12 @@ const feedSlice=createSlice({
     reducers:{
         addFeedData:(state,action)=>{
             return action.payload
+        },
+        removeFeedData:(state)=>{
+             state.shift();
         }
     }
 });
 
 export default feedSlice.reducer;
-export const {addFeedData}=feedSlice.actions;
+export const {addFeedData,removeFeedData}=feedSlice.actions;

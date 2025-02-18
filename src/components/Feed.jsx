@@ -5,6 +5,7 @@ import axios from "axios";
 import { BACKEND_LOCALHOST_URL } from "../utils/constant";
 import { useDispatch, useSelector } from "react-redux";
 import { addFeedData } from "../utils/feedSlice";
+import ShimmerUI from "./ShimmerUI";
 
 const Feed=()=>{
     const dispatch=useDispatch();
@@ -36,13 +37,21 @@ const Feed=()=>{
 
         
     },[]);
-    
+
+    if(!UserFeeddata || UserFeeddata==null){
+        return <ShimmerUI/>
+    }
     return(
         <>
         {display && <AlertMessage/>}
+        <div className="flex flex-wrap">
         {UserFeeddata &&
-            <Feedcard userData={UserFeeddata[0]}/>
+                // UserFeeddata.map((data)=>(
+                //     <Feedcard key={data?._id} userData={data}/>
+                // ))
+                <Feedcard  userData={UserFeeddata[0]}/>
         }
+         </div>
         </>
     )
 }
