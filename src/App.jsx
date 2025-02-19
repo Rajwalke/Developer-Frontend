@@ -6,6 +6,8 @@ import { Provider } from "react-redux"
 import devmergStore from "./utils/devmergStore"
 import Signup from "./components/Signup"
 import Profile from "./components/Profile"
+import Editprofile from "./components/Editprofile"
+import Pendingrequest from "./components/Pendingrequest"
 const App=()=> {
  
   return (
@@ -17,6 +19,13 @@ const App=()=> {
               <Route path="/login" element={<Login/>}/>
               <Route path="/signup" element={<Signup/>}></Route>
               <Route path="/profile" element={<Profile/>}></Route>
+              <Route path="/edit" element={<Editprofile/>}></Route>
+              <Route path="/request/pending" element={<Pendingrequest/>}></Route>
+            </Route>
+          </Routes>
+          <Routes>
+            <Route>
+              
             </Route>
           </Routes>
         </BrowserRouter>

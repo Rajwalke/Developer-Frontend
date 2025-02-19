@@ -14,6 +14,7 @@ const Body = () => {
     const dispatch=useDispatch();
     const fetchLoginUserData=async()=>{
         try{
+            if(user)return;
             const userData=await axios.get(
                 BACKEND_LOCALHOST_URL+"/profile/view",
                 {
@@ -35,18 +36,16 @@ const Body = () => {
     }
 
     useEffect(()=>{
-        if(!user){
-            fetchLoginUserData();
-        }
+     fetchLoginUserData();
         
     },[]);
 
 
 
     return (
-        <div className="mx-10 px-4 py-6">
+        <div className="mx-1 px-2 py-6">
             <Header />
-            <div className="flex gap-6 my-6">
+            <div className="flex gap-1 my-6">
                 {user && <Sidebar />}
                 <div className="flex-1">
                     <Outlet />
