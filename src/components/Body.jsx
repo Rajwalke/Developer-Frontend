@@ -45,7 +45,7 @@ const Body = () => {
     return (
         <div className="mx-1 px-2 py-6">
             <Header />
-            <div className="flex gap-1 my-6">
+            <div className="flex gap-1 my-2">
                 {user && <Sidebar />}
                 <div className="flex-1">
                     <Outlet />
