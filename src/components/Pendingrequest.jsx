@@ -36,7 +36,7 @@ const Pendingrequest=()=>{
             {
                 userPendingRequestData.map((data,index)=>(
                    
-                    <PendingRequestCard key={data?._id} senderData={data} />
+                    <PendingRequestCard key={data?._id} index={index} senderData={data} />
                 ))
             }
             

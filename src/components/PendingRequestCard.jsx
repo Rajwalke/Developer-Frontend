@@ -1,6 +1,51 @@
-const PendingRequestCard = ({senderData}) => {
+import axios from "axios";
+import { BACKEND_LOCALHOST_URL } from "../utils/constant";
+import { useId } from "react";
+import { useDispatch } from "react-redux";
+import { removeRequest } from "../utils/connectionSlice";
+
+const PendingRequestCard = ({senderData,index}) => {
     // const {firstName,lastName,photoURL}=senderData?.formUserId;
-    console.log("This is from PendirequestCard ",senderData)
+    const dispatch=useDispatch();
+    console.log("This is from PendirequestCard ",senderData);
+    const LogginuserId=senderData?.toUserId;
+    const requestAccept=async()=>{
+     try{
+      const accept=await axios.post(
+        BACKEND_LOCALHOST_URL+"/request/review/accepted/" + senderData?._id,
+        {
+          LogginuserId
+        },
+        {
+          withCredentials:true
+        }
+      );
+      console.log("Request Accept",accept);
+      dispatch(removeRequest(index));
+     }catch(err){
+      console.error(err);
+     }
+    }
+
+    const requestReject=async()=>{
+        try{
+          const reject=await axios.post(
+            BACKEND_LOCALHOST_URL+"/request/review/rejected/" +senderData?._id,
+            {
+              LogginuserId
+            },
+            {
+              withCredentials:true
+  
+            }
+          )
+          console.log("Request Rejected",reject);
+          dispatch(removeRequest(index));
+        }catch(err){
+          console.error(err);
+        }
+    }
+
     if(!senderData)return ;
     return (
         <>
@@ -26,10 +71,14 @@ const PendingRequestCard = ({senderData}) => {
   
         {/* Right section with buttons */}
         <div className="flex gap-2">
-          <button className="btn btn-success btn-sm sm:btn-lg shadow-md">
+          <button className="btn btn-success btn-sm sm:btn-lg shadow-md"
+          onClick={requestAccept}
+          >
             Accept
           </button>
-          <button className="btn btn-neutral btn-sm sm:btn-lg shadow-md">
+          <button className="btn btn-neutral btn-sm sm:btn-lg shadow-md"
+          onClick={requestReject}
+          >
             Ignore
           </button>
         </div>
