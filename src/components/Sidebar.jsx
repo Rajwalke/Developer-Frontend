@@ -50,7 +50,10 @@ const Sidebar = () => {
                 <FaUserFriends className="text-primary" size={iconSize} />
                 {!isCollapsed && <span className="ml-3">Connection</span>}
             </Link>
-            
+            <Link to="/request/accept" className="flex justify-center md:justify-start items-center text-2xl px-3 py-4 cursor-pointer bg-base-100 my-2 rounded-2xl hover:bg-base-200 hover:rounded-r-full transition-all">
+                <FaEnvelope className="text-primary" size={iconSize} />
+                {!isCollapsed && <span className="ml-3">All-Dev</span>}
+            </Link>
             <div className="flex justify-center md:justify-start items-center text-2xl px-3 py-4 cursor-pointer bg-base-100 my-2 rounded-2xl hover:bg-base-200 hover:rounded-r-full transition-all">
                 <FaEnvelope className="text-primary" size={iconSize} />
                 {!isCollapsed && <span className="ml-3">Message</span>}

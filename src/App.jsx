@@ -8,6 +8,7 @@ import Signup from "./components/Signup"
 import Profile from "./components/Profile"
 import Editprofile from "./components/Editprofile"
 import Pendingrequest from "./components/Pendingrequest"
+import AllAcceptrequest from "./components/AllAcceptRequest"
 const App=()=> {
  
   return (
@@ -21,6 +22,7 @@ const App=()=> {
               <Route path="/profile" element={<Profile/>}></Route>
               <Route path="/edit" element={<Editprofile/>}></Route>
               <Route path="/request/pending" element={<Pendingrequest/>}></Route>
+              <Route path="/request/accept" element={<AllAcceptrequest/>}></Route>
             </Route>
           </Routes>
           <Routes>
