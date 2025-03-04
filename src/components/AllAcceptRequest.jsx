@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { BACKEND_LOCALHOST_URL } from "../utils/constant";
 import { useDispatch, useSelector } from "react-redux";
 import { allAcceptRequest } from "../utils/connectionSlice";
+import { Link } from "react-router-dom";
 
 const AllAcceptrequest=()=>{2
     const dispatch=useDispatch();
@@ -36,7 +37,7 @@ const AllAcceptrequest=()=>{2
                 Allfriends &&
                 
                 Allfriends.map((friendData)=>(
-                    <AllAcceptRequestCard key={friendData?._id} friendData={friendData} />
+                   <Link key={friendData?._id} to={"/profile/friend/"+friendData?._id}><AllAcceptRequestCard  friendData={friendData} /> </Link>
                 )) 
             }
         </div>

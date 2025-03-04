@@ -4,7 +4,8 @@ const connectionSlice=createSlice({
     name:"connection",
     initialState:{
         pendingRequest:[null],
-        acceptRequest:[null]
+        acceptRequest:[null],
+        firendInfo:null,
     },
     reducers:{
         addAllRequest:(state,action)=>{
@@ -15,8 +16,12 @@ const connectionSlice=createSlice({
         },
         allAcceptRequest:(state,action)=>{
             state.acceptRequest=action.payload;
+        },
+        addFriendInfo:(state,action)=>{
+            state.firendInfo=action.payload;
         }
+        
     }
 });
 export default connectionSlice.reducer;
-export  const {addAllRequest,removeRequest,allAcceptRequest}=connectionSlice.actions
+export  const {addAllRequest,removeRequest,allAcceptRequest,addFriendInfo}=connectionSlice.actions

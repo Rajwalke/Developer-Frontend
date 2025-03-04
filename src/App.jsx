@@ -9,6 +9,7 @@ import Profile from "./components/Profile"
 import Editprofile from "./components/Editprofile"
 import Pendingrequest from "./components/Pendingrequest"
 import AllAcceptrequest from "./components/AllAcceptRequest"
+import FriendProfile from "./components/FriendProfile"
 const App=()=> {
  
   return (
@@ -23,6 +24,7 @@ const App=()=> {
               <Route path="/edit" element={<Editprofile/>}></Route>
               <Route path="/request/pending" element={<Pendingrequest/>}></Route>
               <Route path="/request/accept" element={<AllAcceptrequest/>}></Route>
+              <Route path="/profile/friend/:reqId" element={<FriendProfile/>}></Route>
             </Route>
           </Routes>
           <Routes>
